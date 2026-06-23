@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { getDashboardStats, getRevenueChart, getProductPerformance, getOrderStatusBreakdown, getSalesByProduct } from '../controllers/analyticsController';
+import { authenticate, requireAdmin } from '../middleware/auth';
+const router = Router();
+router.get('/dashboard', authenticate, requireAdmin, getDashboardStats);
+router.get('/revenue', authenticate, requireAdmin, getRevenueChart);
+router.get('/products', authenticate, requireAdmin, getProductPerformance);
+router.get('/orders/breakdown', authenticate, requireAdmin, getOrderStatusBreakdown);
+router.get('/sales-by-product', authenticate, requireAdmin, getSalesByProduct);
+export default router;
